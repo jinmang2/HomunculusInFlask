@@ -32,6 +32,11 @@ def getSynset():
     correct_ = request.args.get('correct')
     input_ = request.args.get('input')
     
+    if type(input_) == type(None):
+        return "User input is 'None'"
+    if type(correct_) == type(None):
+        return "Correct answer is 'None'"
+    
     zero_synsets = wordnet.synsets(correct_)
     if zero_synsets == []:
         return 'Fail'
